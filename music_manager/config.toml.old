@@ -1,0 +1,3 @@
+music_dir = "/home/arend/Music/youtube"
+default_dir = "/home/arend/Music/youtube/other"
+tmp_dir = "/home/arend/Music/tmp"

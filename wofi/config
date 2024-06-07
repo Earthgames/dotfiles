@@ -1,0 +1,10 @@
+mode=drun
+location=2
+gtk_dark=true
+prompt=
+width=800
+height=430
+allow_images=true
+allow_markup=true
+matching=fuzzy
+

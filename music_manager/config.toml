@@ -1,0 +1,5 @@
+music_dir = "/home/arend/Music/youtube"
+default_dir = "/home/arend/Music/youtube/other"
+file_extensions = ["opus", "mp3"]
+album_files = ["cover*"]
+

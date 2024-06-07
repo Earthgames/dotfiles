@@ -1,0 +1,49 @@
+* 
+{
+    border: 0;
+    border-radius: 0;
+    font-family: FontAwesome, Roboto compact;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar 
+{
+    background: rgba(40, 42, 54, 0.7);
+    color: #f8f8f2;
+}
+
+tooltip 
+{
+	background: rgba(40, 42, 54, 0.7);
+	color: #f8f8f2;
+}
+tooltip label 
+{
+	color: #f8f8f2;
+}
+
+#battery.charging {
+	color: #50fa7b;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffb86c;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff5555;
+}
+
+#backlight {
+	margin: 0px 3px 0px 0px;
+}
+
+#temperature {
+	margin: 0px 3px 0px 0px;
+}
+
+#tray
+{
+	padding-right: 15px;
+}
