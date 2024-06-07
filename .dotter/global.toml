@@ -1,0 +1,28 @@
+[helpers]
+
+[zsh.files]
+"zsh/.zshrc" = "~/.zshrc"
+"zsh/robbyrussell.zsh-theme" = "~/.oh-my-zsh/custom/themes/robbyrussell.zsh-theme"
+thefuck = "~/.config/thefuck/"
+
+[alacritty.files]
+alacritty = "~/.config/alacritty"
+
+[tui.files]
+nvim = {target = "~/.config/nvim", type = "symbolic"}
+ranger = "~/.config/ranger"
+gitui = "~/.config/gitui"
+
+[mpv.files]
+mpv = "~/.config/mpv"
+
+[music_manager.files]
+music_manager = "~/.config/music_manager"
+
+[wayfire.files]
+swaylock = "~/.config/swaylock"
+waybar = "~/.config/waybar"
+wofi = "~/.config/wofi"
+wayfire = "~/.config"
+
+
