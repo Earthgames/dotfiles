@@ -113,11 +113,14 @@
 	" Git
 	Plug 'TimUntersberger/neogit'
 	Plug 'nvim-lua/plenary.nvim'
-
 	{{#if laptop}}
+
 	"Battery
 	Plug 'lambdalisue/battery.vim'
 	{{/if}}
+
+	" Discord
+	Plug 'andweeb/presence.nvim'
 
 	" Status bar
 	Plug 'vim-airline/vim-airline'
@@ -211,7 +214,6 @@
 	highlight link RainbowDelimiterGreen DraculaPurple
 	highlight link RainbowDelimiterViolet DraculaOrange
 	highlight link RainbowDelimiterCyan DraculaRed
-
 "
 	" STATUS LINE 
 	"
