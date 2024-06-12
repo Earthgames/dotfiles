@@ -1,0 +1,5 @@
+	packages = ["zsh", "alacritty", "tui", "mpv", "music_manager"]
+
+	[files]
+
+	[variables]
