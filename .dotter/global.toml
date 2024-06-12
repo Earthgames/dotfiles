@@ -1,17 +1,20 @@
 [helpers]
 
+
 [zsh.files]
 "zsh/.zshrc" = "~/.zshrc"
 "zsh/robbyrussell.zsh-theme" = "~/.oh-my-zsh/custom/themes/robbyrussell.zsh-theme"
 thefuck = "~/.config/thefuck/"
+# local variable laptop
 
 [alacritty.files]
 alacritty = "~/.config/alacritty"
 
 [tui.files]
-nvim = {target = "~/.config/nvim", type = "symbolic"}
+nvim = "~/.config/nvim"
 ranger = "~/.config/ranger"
 gitui = "~/.config/gitui"
+# local variable laptop
 
 [mpv.files]
 mpv = "~/.config/mpv"
@@ -24,5 +27,4 @@ swaylock = "~/.config/swaylock"
 waybar = "~/.config/waybar"
 wofi = "~/.config/wofi"
 wayfire = "~/.config"
-
 
