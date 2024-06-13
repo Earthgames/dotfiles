@@ -135,6 +135,9 @@ alias :x="exit"
 # Only neovim
 alias vim="nvim"
 
+# neogit
+alias neogit="nvim +Neogit"
+
 # Use ripgrep
 alias grep="rg"
 
