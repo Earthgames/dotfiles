@@ -4,66 +4,29 @@
     "height": 14, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
-    // Choose the order of the modules
+    // The order of the modules
     "modules-left": ["custom/empty_spacing", "custom/search", "custom/filemanager", "custom/display", "custom/settings"],
     "modules-center": ["sway/window", "clock"],
-    "modules-right": [ "keyboard-state","custom/spacing","idle_inhibitor", "custom/spacing", "network", "custom/spacing", "pulseaudio","custom/spacing", "backlight", "cpu","custom/spacing", "battery", "battery#bat2", "custom/spacing","tray"],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
-    "keyboard-state": {
-        "numlock": true,
+    "modules-right": [ "keyboard-state#cap", "keyboard-state#num","custom/spacing","idle_inhibitor", "custom/spacing",
+		"network", "custom/spacing", "pulseaudio","custom/spacing", "backlight", "cpu","custom/spacing",
+		"battery", "battery#bat2", "custom/spacing","tray"],
+
+	// Modules
+    "keyboard-state#cap": {
         "capslock": true,
-        "format": {
-			"numlock": " N {icon}",
-			"capslock": "C {icon} |"
-		},
+        "format":"{icon}",
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": "Cp ",
+            "unlocked": ""
         }
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 2,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+    "keyboard-state#num": {
+        "numlock": true,
+        "format":"{icon}",
+        "format-icons": {
+            "locked": "Nm ",
+            "unlocked": ""
+        }
     },
     "idle_inhibitor": {
         "format": "{icon}",
