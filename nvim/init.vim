@@ -108,6 +108,7 @@
 	" CodeTree
 	Plug 'nvim-treesitter/nvim-treesitter'
 
+	" Rainbow brackets
 	Plug 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim'
 	
 	" Git
@@ -147,6 +148,9 @@
 	" Fromatter
 	Plug 'mhartington/formatter.nvim'
 
+	" Comments
+	Plug 'numToStr/Comment.nvim'
+
 	" Rust analyzer
 	Plug 'simrat39/rust-tools.nvim'
 
@@ -184,6 +188,8 @@
 	" VimTeX features will not work (see ":help vimtex-requirements" for more
 	" info).
 	syntax enable
+
+	lua require('Comment').setup()
 	
 	" Viewer options: One may configure the viewer either by specifying a built-in
 	" viewer method:
