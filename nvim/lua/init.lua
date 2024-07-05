@@ -32,9 +32,9 @@ rt.setup({
   server = {
     on_attach = function(_, bufnr)
       -- Hover actions
-      vim.keymap.set("n", "<CR>n", rt.hover_actions.hover_actions, { buffer = bufnr })
+      vim.keymap.set("n", "<C-n>", rt.hover_actions.hover_actions, { buffer = bufnr })
       -- Code action groups
-      vim.keymap.set("n", "<CR>.", rt.code_action_group.code_action_group, { buffer = bufnr })
+      vim.keymap.set("n", "<C-.>", rt.code_action_group.code_action_group, { buffer = bufnr })
     end,
   },
 })
