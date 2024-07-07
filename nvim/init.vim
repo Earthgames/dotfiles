@@ -220,6 +220,14 @@
 	highlight link RainbowDelimiterGreen DraculaPurple
 	highlight link RainbowDelimiterViolet DraculaOrange
 	highlight link RainbowDelimiterCyan DraculaRed
+
+	" Matching brackets
+	inoremap { {}<Esc>ha
+	inoremap ( ()<Esc>ha
+	inoremap [ []<Esc>ha
+	inoremap " ""<Esc>ha
+	inoremap ' ''<Esc>ha
+
 "
 	" STATUS LINE 
 	"
