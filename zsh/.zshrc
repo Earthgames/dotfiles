@@ -81,7 +81,6 @@ plugins=(
 	thefuck 
 	ssh-agent 
 	rust
-	ripgrep
 	zoxide
 )
 
