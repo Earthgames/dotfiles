@@ -145,6 +145,9 @@
 	" Fromatter
 	Plug 'mhartington/formatter.nvim'
 
+	" Haskell
+	Plug 'mrcjkb/haskell-tools.nvim'
+
 	" Comments
 	Plug 'numToStr/Comment.nvim'
 

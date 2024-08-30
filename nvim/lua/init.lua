@@ -29,7 +29,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
-	vim.keymap.set('n', 'M', function() vim.cmd.RustLsp('codeAction') end, opts)
   end,
 })
 
@@ -39,6 +38,11 @@ vim.g.rustaceanvim = {
 		float_win_config = {
 			auto_focus = true
 		}
+	},
+	server = {
+		on_attach = function(client, bufnr)
+			vim.keymap.set('n', '<C-.>', function() vim.cmd.RustLsp('codeAction') end, {buffer = bufnr})
+		end
 	}
 }
 
