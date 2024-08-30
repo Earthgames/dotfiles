@@ -1,6 +1,3 @@
-
-
-
 -- Setup -----------------------------------------------
 
 -- disable netrw
@@ -25,20 +22,25 @@ require("mason").setup({
     }
 })
 
--- Rust analyze
-local rt = require("rust-tools")
-
-rt.setup({
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-n>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<C-.>", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
-  },
+-- Language server
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+	vim.keymap.set('n', 'M', function() vim.cmd.RustLsp('codeAction') end, opts)
+  end,
 })
 
+-- Rust server
+vim.g.rustaceanvim = {
+	tools = {
+		float_win_config = {
+			auto_focus = true
+		}
+	}
+}
 -- LSP Diagnostics Options Setup 
 local sign = function(opts)
   vim.fn.sign_define(opts.name, {
@@ -156,11 +158,11 @@ cmp.setup({
   -- Installed sources:
   sources = {
     { name = 'path' },                              -- file paths
-    { name = 'nvim_lsp', keyword_length = 3 },      -- from language server
+    { name = 'nvim_lsp'},      -- from language server
     { name = 'nvim_lsp_signature_help'},            -- display function signatures with current parameter emphasized
-    { name = 'nvim_lua', keyword_length = 2},       -- complete neovim's Lua runtime API such vim.lsp.*
-    { name = 'buffer', keyword_length = 2 },        -- source current buffer
-    { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip 
+    { name = 'nvim_lua'},       -- complete neovim's Lua runtime API such vim.lsp.*
+    { name = 'buffer'},        -- source current buffer
+    { name = 'vsnip'},         -- nvim-cmp source for vim-vsnip 
     { name = 'calc'},                               -- source for math calculation
   },
   window = {

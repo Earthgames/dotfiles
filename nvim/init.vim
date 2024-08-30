@@ -129,9 +129,6 @@
 
 	" Colourscheme
 	Plug 'dracula/vim',{'as':'dracula'}
-
-	" Rust analyzer
-	Plug 'rust-lang/rust.vim'
 	
 	" manage external editor tooling such as LSP servers, DAP servers, linters, and formatters 
 	Plug 'williamboman/mason.nvim'	
@@ -152,7 +149,7 @@
 	Plug 'numToStr/Comment.nvim'
 
 	" Rust analyzer
-	Plug 'simrat39/rust-tools.nvim'
+	Plug 'mrcjkb/rustaceanvim'
 
 	" Completion framework:
     Plug 'hrsh7th/nvim-cmp' 
