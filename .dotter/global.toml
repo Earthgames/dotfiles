@@ -27,4 +27,5 @@ swaylock = "~/.config/swaylock"
 waybar = "~/.config/waybar"
 wofi = "~/.config/wofi"
 wayfire = "~/.config"
+wlogout = "~/.config/wlogout"
 
