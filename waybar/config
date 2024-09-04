@@ -8,7 +8,7 @@
     "modules-left": ["custom/empty_spacing", "custom/search", "custom/filemanager", "custom/display", "custom/settings"],
     "modules-center": ["sway/window", "clock"],
     "modules-right": [ "keyboard-state#cap", "keyboard-state#num","custom/spacing","idle_inhibitor", "custom/spacing",
-		"network", "custom/spacing", "pulseaudio","custom/spacing", "backlight", "cpu","custom/spacing",
+		"network", "custom/spacing", "pulseaudio","custom/spacing", "backlight", "cpu",
 		"battery", "battery#bat2", "custom/spacing","tray"],
 
 	// Modules
@@ -31,8 +31,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         }
     },
     "tray": {
@@ -93,7 +93,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "| {capacity}% {icon}",
         "format-charging": "{capacity}%  ",
         "format-plugged": "{capacity}%  ",
         "format-alt": "{time} {icon}",
