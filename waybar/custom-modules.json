@@ -1,0 +1,42 @@
+{
+	"custom/display-switcher":
+	{
+	    "tooltip": false,
+	    "format": "  ",
+	    "on-click": "wdisplays"
+	},
+	"custom/app-search":
+	{
+	    "tooltip": false,
+	    "format": "  ",
+	    "on-click": "wofi"
+	},
+	"custom/wayfire-settings":
+	{
+	    "tooltip": false,
+	    "format": "  ",
+	    "on-click": "wcm"
+	},
+	"custom/filemanager":
+	{
+		"tooltip": false,
+		"format": "  ",
+		"on-click": "thunar"
+	},
+	"custom/terminal": {
+		"tooltip": false,
+		"format": "  ",
+		"on-click": "alacritty"
+	},
+	"custom/screenshot": {
+		"format": "󰋱 "
+	},
+	"custom/spacer":{
+	"tooltip": false,
+	"format": "|"
+	},
+	"custom/empty_spacer":{
+	"tooltip": false,
+	"format": "  "
+	}
+}
