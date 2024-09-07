@@ -9,7 +9,7 @@
 	{
 	    "tooltip": false,
 	    "format": "  ",
-	    "on-click": "wofi"
+	    "on-click": "~/.config/rofi/scripts/launcher.sh"
 	},
 	"custom/wayfire-settings":
 	{
