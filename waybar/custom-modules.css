@@ -1,0 +1,9 @@
+@import './colors.css';
+
+#custom-display-switcher:hover,
+#custom-wayfire-settings:hover,
+#custom-filemanager:hover,
+#custom-terminal:hover,
+#custom-app-search:hover{
+	color: @selected
+}
