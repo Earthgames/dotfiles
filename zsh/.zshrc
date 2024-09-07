@@ -161,6 +161,9 @@ export DOTNET_ROOT=$HOME/.dotnet
 export MGFXC_WINE_PATH=/home/arend/.winemonogame
 # export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
+# GPG Key
+export GPG_TTY=$(tty)
+
 # locals
 export LC_CTYPE="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
