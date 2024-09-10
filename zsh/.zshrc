@@ -125,29 +125,25 @@ alias l="ls -l "
 alias ds="dirs -v "
 alias pd="pushd "
 alias pp="popd "
-# alias cuda="LD_LIBRARY_PATH="/home/arend/programms/zluda:$LD_LIBRARY_PATH" "
 
 # vimlike
 alias :q="exit"
 alias :x="exit"
 
-# Only neovim
+# Replace old commands with new stuff
 alias vim="nvim"
+alias grep="batgrep --no-separator" # need bat bat-extras ripgrep
+alias cat="bat -pp"
+alias man="batman"
 
 # neogit
 alias neogit="nvim +Neogit"
-
-# Use ripgrep
-alias grep="rg"
 
 # matrix(like the movie)
 alias matrix="cmatrix -ab "
 alias rainbowmatrix="cmatrix -abr"
 
 alias nuget="mono /usr/local/bin/nuget.exe"
-
-#cmus display
-# alias cmdis="/home/arend/.config/cmus/cmus-cover-art/display.sh"
 
 # paths
 export XBPS_DISTDIR=$HOME/void-packages
@@ -163,6 +159,9 @@ export MGFXC_WINE_PATH=/home/arend/.winemonogame
 
 # GPG Key
 export GPG_TTY=$(tty)
+
+# Theme
+export QT_QPA_PLATFORMTHEME=qt6ct # also add this to /etc/profile
 
 # locals
 export LC_CTYPE="en_US.UTF-8"
