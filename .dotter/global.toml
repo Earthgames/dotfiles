@@ -26,5 +26,5 @@ music_manager = "~/.config/music_manager"
 swaylock = "~/.config/swaylock"
 waybar = "~/.config/waybar"
 wayfire = "~/.config"
-rofi = "~/.config"
+rofi = "~/.config/rofi"
 

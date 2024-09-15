@@ -57,17 +57,18 @@ fi
 notify_view() {
 	notify_cmd_shot='dunstify -u low --replace=699'
 	${notify_cmd_shot} "Copied to clipboard."
-	viewnior ${dir}/"$file"
-	if [[ -e "$dir/$file" ]]; then
+	Action=$(dunstify --action="default,Reply" "Save screenshot?")
+	if [ "$Action" = "default" ]; then
+		wl-paste -n > $file # don't copy anything in this time
 		${notify_cmd_shot} "Screenshot Saved."
 	else
-		${notify_cmd_shot} "Screenshot Deleted."
+	 	${notify_cmd_shot} "Screenshot Not Saved."
 	fi
 }
 
 # Copy screenshot to clipboard
 copy_shot () {
-	sleep 1 && wl-copy < "$file" # wait till the image is fully saved
+	wl-copy -t image/png
 }
 
 # countdown
@@ -80,29 +81,31 @@ countdown () {
 
 # take shots
 shotnow () {
-	cd ${dir} && sleep 0.3 && grim ${file} | copy_shot # wait till screenshot menu is away
+	cd ${dir} && sleep 0.3 && grim - | copy_shot # wait till screenshot menu is away
 	notify_view
 }
 
 shot5 () {
 	countdown '5'
-	sleep 1 && cd ${dir} && grim ${file} | copy_shot
+	sleep 1 && cd ${dir} && grim - | copy_shot
 	notify_view
 }
 
 shot10 () {
 	countdown '10'
-	sleep 1 && cd ${dir} && grim ${file} | copy_shot
+	sleep 1 && cd ${dir} && grim -| copy_shot
 	notify_view
 }
 
 shotwin () {
-	cd ${dir} && grim -g "$(wf-info | grep Geometry | awk '{print $2, $3}')" ${file} | copy_shot
+	pos="$(wf-info | command grep Geometry | awk '{print $2, $3}')"
+	cd ${dir} && grim -g "$pos" - | copy_shot
+	echo  "$pos"
 	notify_view
 }
 
 shotarea () {
-	cd ${dir} && grim -g "$(slurp -d)" ${file} | copy_shot
+	cd ${dir} && grim -g "$(slurp -d)" - | copy_shot
 	notify_view
 }
 

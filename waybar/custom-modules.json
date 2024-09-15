@@ -29,7 +29,8 @@
 		"on-click": "alacritty"
 	},
 	"custom/screenshot": {
-		"format": "󰋱 "
+		"format": "  ",
+		"on-click": "~/.config/rofi/scripts/screenshot.sh"
 	},
 	"custom/spacer":{
 	"tooltip": false,
