@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Rust server
+-- Rust tools
 vim.g.rustaceanvim = {
 	tools = {
 		float_win_config = {
@@ -44,6 +44,21 @@ vim.g.rustaceanvim = {
 			vim.keymap.set('n', '<C-.>', function() vim.cmd.RustLsp('codeAction') end, {buffer = bufnr})
 		end
 	}
+}
+
+-- haskell tools
+vim.g.haskell_tools = {
+  tools = {
+	  hover = {
+		auto_focus = true,
+	  }
+  },
+  hls = {
+    on_attach = function(client, bufnr, ht)
+      -- Set keybindings, etc. here.
+    end,
+    -- ...
+  },
 }
 
 vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=DraculaFg guibg=DraculaBg]]
@@ -217,7 +232,7 @@ cmp.setup({
 
 -- Treesitter Plugin Setup 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = {"rust", "toml" },
+  ensure_installed = {"rust", "toml", "haskell" },
   auto_install = true,
   highlight = {
     enable = true,
