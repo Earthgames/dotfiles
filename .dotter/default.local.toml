@@ -1,4 +1,4 @@
-	packages = ["zsh", "alacritty", "tui", "mpv", "music_manager"]
+	packages = ["zsh", "tui", "mpv", "music_manager", "kitty", "wayfire"]
 
 	[files]
 
