@@ -26,7 +26,7 @@
 	"custom/terminal": {
 		"tooltip": false,
 		"format": "  ",
-		"on-click": "alacritty"
+		"on-click": "kitty"
 	},
 	"custom/screenshot": {
 		"format": "  ",

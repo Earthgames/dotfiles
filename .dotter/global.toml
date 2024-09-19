@@ -10,6 +10,9 @@ thefuck = "~/.config/thefuck/"
 [alacritty.files]
 alacritty = "~/.config/alacritty"
 
+[kitty.files]
+kitty = "~/.config/kitty"
+
 [tui.files]
 nvim = "~/.config/nvim"
 ranger = "~/.config/ranger"
