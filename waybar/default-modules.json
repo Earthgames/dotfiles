@@ -22,7 +22,7 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%A Week %U}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d-%m-%Y}",
+        "format-alt": "{:%d-%m-%Y %H:%M}",
         "calendar": {
             "mode": "month",
             "mode-mon-col": 4,
