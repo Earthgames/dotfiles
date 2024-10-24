@@ -33,15 +33,38 @@
 	
 	" Highlight cursor line underneath the cursor vertically.
 	" set cursorcolumn
-	
-	" Set shift width to 4 spaces.
-	set shiftwidth=4
-	
-	" Set tab width to 4 columns.
-	set tabstop=4
-	
+    
+    " length of an actual \t character:
+    set tabstop=4
+    " length to use when editing text (eg. TAB and BS keys)
+    " (0 for ‘tabstop’, -1 for ‘shiftwidth’):
+    set softtabstop=-1
+    " length to use when shifting text (eg. <<, >> and == commands)
+    " (0 for ‘tabstop’):
+    set shiftwidth=0
+    " round indentation to multiples of 'shiftwidth' when shifting text
+    " (so that it behaves like Ctrl-D / Ctrl-T):
+    set shiftround
+	" Expandes tabs to spaces.
+	set expandtab
+
+    " reproduce the indentation of the previous line:
+    set autoindent
+    " keep indentation produced by 'autoindent' if leaving the line blank:
+    set cpoptions+=I
+    " try to be smart (increase the indenting level after ‘{’,
+    " decrease it after ‘}’, and so on):
+    "set smartindent
+    " a stricter alternative which works better for the C language:
+    "set cindent
+    " use language‐specific plugins for indenting (better):
+    filetype plugin indent on
+    
+    " use shorter indentation for Haskell scripts:
+    autocmd FileType haskell setlocal tabstop=2
+
 	" While searching though a file incrementally highlight matching characters as you type.
-	 set incsearch
+	set incsearch
 	
 	" Ignore capital letters during search.
 	set ignorecase
@@ -227,7 +250,6 @@
 	inoremap [ []<Esc>ha
 	inoremap " ""<Esc>ha
 	inoremap ' ''<Esc>ha
-
 "
 	" STATUS LINE 
 	"
