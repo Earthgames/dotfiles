@@ -168,6 +168,9 @@
 	" Fromatter
 	Plug 'mhartington/formatter.nvim'
 
+    " Todo highlighting
+    Plug 'folke/todo-comments.nvim'
+
 	" Haskell
 	Plug 'mrcjkb/haskell-tools.nvim'
 

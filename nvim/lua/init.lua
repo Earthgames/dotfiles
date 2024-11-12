@@ -10,6 +10,7 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup()
+require("todo-comments").setup()
 
 -- lang server and other things
 require("mason").setup({
