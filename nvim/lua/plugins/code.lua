@@ -58,16 +58,21 @@ return {
 -- Manage external editor tooling such as LSP servers, DAP servers, linters, and formatters 
   {
     "williamboman/mason.nvim",
-    ui = {
-      icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗"
-      }
-    }
+    lazy = false,
+    config = function()
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+          }
+        }
+      })
+    end
   },
   -- "williamboman/mason-lspconfig.nvim",
-  -- "neovim/nvim-lspconfig",
+  "neovim/nvim-lspconfig",
 -- Debuger 
   { 
     "rcarriga/nvim-dap-ui", 

@@ -13,19 +13,7 @@
 require("config.lazy")
 
 -- empty setup using defaults
-require("nvim-tree").setup()
 require("todo-comments").setup()
-
--- lang server and other things
--- require("williamboman/mason.nvim").setup({
---     ui = {
---         icons = {
---             package_installed = "✓",
---             package_pending = "➜",
---             package_uninstalled = "✗"
---         }
---     }
--- })
 
 -- Language server
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -34,6 +22,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<C-.>', vim.lsp.buf.code_action, opts)
   end,
 })
 
@@ -57,12 +46,6 @@ vim.g.haskell_tools = {
       hover = {
         auto_focus = true,
       }
-  },
-  hls = {
-    on_attach = function(client, bufnr, ht)
-      -- Set keybindings, etc. here.
-    end,
-    -- ...
   },
 }
 
@@ -238,9 +221,6 @@ cmp.setup({
 -- Settings ----------------------------------------------------------------
 vim.cmd([[
     nnoremap <F3> :NvimTreeToggle<CR>
-
-    " Colourscheme
-    colorscheme dracula
 
     " Transparent background
     hi Normal guibg=NONE ctermbg=NONE
