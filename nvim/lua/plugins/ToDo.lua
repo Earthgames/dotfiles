@@ -8,12 +8,6 @@ return {
 -- Todo highlighting
   "folke/todo-comments.nvim",
 
--- Haskell
-  {
-    "mrcjkb/haskell-tools.nvim",
-    lazy = false,
-  },
-
 -- Comments
   "numToStr/Comment.nvim",
 
