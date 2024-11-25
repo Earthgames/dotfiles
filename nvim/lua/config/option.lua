@@ -20,6 +20,9 @@ filetype indent on
 syntax on
 ]])
 
+-- Always use the system clipboard for operations
+vim.opt.clipboard = "unnamedplus"
+
 -- Add numbers to each line on the left-hand side.
 vim.opt.number = true
 
@@ -125,7 +128,8 @@ vim.api.nvim_set_option('updatetime', 300)
 -- Goto previous / next diagnostic warning / error 
 -- Show inlay_hints more frequently 
 vim.cmd([[
-set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+autocmd FileType help setlocal nospell
+au TermOpen * setlocal nospell
 ]])
 
