@@ -171,4 +171,5 @@ export LC_ALL="en_US.UTF-8"
 export PATH=$PATH:/home/arend/.dotnet/tools
 export MGFXC_WINE_PATH=$HOME/.winemonogame
 . "$HOME/.cargo/env"
+[ -f "/home/arend/.ghcup/env" ] && . "/home/arend/.ghcup/env" # ghcup-env
 
