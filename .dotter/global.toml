@@ -12,6 +12,7 @@ alacritty = "~/.config/alacritty"
 
 [kitty.files]
 kitty = "~/.config/kitty"
+fastfetch = "~/.config/fastfetch"
 
 [tui.files]
 nvim = "~/.config/nvim"
