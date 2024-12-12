@@ -20,6 +20,8 @@ filetype indent on
 syntax on
 ]])
 
+vim.g.mapleader = " "
+
 -- Always use the system clipboard for operations
 vim.opt.clipboard = "unnamedplus"
 
@@ -50,13 +52,6 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 -- keep indentation produced by 'autoindent' if leaving the line blank:
 vim.opt.cpoptions:append "I"
--- try to be smart (increase the indenting level after ‘{’,
--- decrease it after ‘}’, and so on):
--- set smartindent
--- a stricter alternative which works better for the C language:
--- set cindent
--- use language‐specific plugins for indenting (better):
-vim.cmd("filetype plugin indent on")
 
 -- use shorter indentation for Haskell scripts:
 vim.cmd("autocmd FileType haskell setlocal tabstop=2")
