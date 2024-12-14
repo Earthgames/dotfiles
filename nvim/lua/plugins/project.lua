@@ -1,33 +1,45 @@
 return {
-  "ahmedkhalf/project.nvim",
-  lazy=false,
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-    "nvim-tree/nvim-tree.lua",
-  },
-  config = function()
-    require("project_nvim").setup({
-      detection_methods = { "pattern" },
-      patterns = { ".git", ">Rust"},
-      exclude_dirs = {"~/.cargo/*"},
-    })
-    require("telescope").load_extension("projects")
-    require("nvim-tree").setup({
-      sync_root_with_cwd = true,
-      respect_buf_cwd = true,
-      update_focused_file = {
-        enable = true,
-        update_root = true
+  {
+    "coffebar/neovim-project",
+    lazy = false,
+    priority = 100,
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+      { "Shatur/neovim-session-manager" },
+    },
+    opts = {
+      projects = { -- define project roots
+        "~/Rust/*",
+        "~/university/haskell/*",
+        "~/git/*",
+        "~/.dotfiles/*",
       },
-    })
-  end,
-  keys = {
-    {
-      "<c-f>",
-      vim.schedule_wrap(
-        function() require("telescope").extensions.projects.projects({}) 
-      end),
-    }
+      picker = {
+        type = "telescope",
+      },
+      last_session_on_startup = true,
+      -- Dashboard mode prevent session autoload on startup
+      dashboard_mode = false,
+      -- Timeout in milliseconds before trigger FileType autocmd after session load
+      -- to make sure lsp servers are attached to the current buffer.
+      -- Set to 0 to disable triggering FileType autocmd
+      filetype_autocmd_timeout = 200,
+      -- Keymap to delete project from history in Telescope picker
+      forget_project_keys = {
+        -- insert mode: Ctrl+d
+        i = "<C-d>",
+        -- normal mode: d
+        n = "d"
+      },
+    },
+    keys = {
+      { "<leader>fp", "<cmd>NeovimProjectDiscover<cr>", desc = "Find projects", },
+    },
+    init = function()
+      -- enable saving the state of plugins in the session
+      vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+    end,
   },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
