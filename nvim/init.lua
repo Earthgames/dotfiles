@@ -251,8 +251,6 @@ vim.cmd([[
     " see ":help vimtex-compiler".
     let g:vimtex_compiler_method = 'tectonic'
 
-    " VIMSCRIPT
-
     " Rainbow brackets vscode theme
     highlight link RainbowDelimiterRed DraculaFg
     highlight link RainbowDelimiterYellow DraculaPink
@@ -261,12 +259,5 @@ vim.cmd([[
     highlight link RainbowDelimiterGreen DraculaPurple
     highlight link RainbowDelimiterViolet DraculaOrange
     highlight link RainbowDelimiterCyan DraculaRed
-
-    " Matching brackets
-    inoremap { {}<Esc>ha
-    inoremap ( ()<Esc>ha
-    inoremap [ []<Esc>ha
-    inoremap " ""<Esc>ha
-    inoremap ' ''<Esc>ha
 ]])
 

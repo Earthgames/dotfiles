@@ -1,3 +1,6 @@
+-- load key map
+require("config.map")
+
 -- disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -19,9 +22,6 @@ filetype indent on
 " Turn syntax highlighting on.
 syntax on
 ]])
-
-vim.g.mapleader = " "
-
 -- Always use the system clipboard for operations
 vim.opt.clipboard = "unnamedplus"
 
