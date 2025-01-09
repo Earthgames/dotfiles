@@ -94,7 +94,7 @@
     },
     "cpu": {
         "format": "{usage}%  ",
-        "format-alt": "{icon}",
+        "format-alt": "{icon} ",
         "tooltip-format": "{usage}%\n{avg_frequency}GHz",
         "format-icons": [
             "▁",
@@ -122,8 +122,18 @@
     },
     "memory": {
         "format-alt": "{used}Gb/{total}Gb  ",
-        "format": " ",
-        "tooltip-format": "{used}Gb/{total}Gb\nswp:{swapUsed}Gb/{swapTotal}Gb"
+        "format": "{icon}",
+        "tooltip-format": "{used}Gb/{total}Gb\nswp:{swapUsed}Gb/{swapTotal}Gb",
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
