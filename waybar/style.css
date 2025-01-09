@@ -59,5 +59,10 @@ tooltip label
 
 #tray
 {
+    background: #666;
 	padding-right: 15px;
+}
+
+#tray menu {
+    background: @background_alpha;
 }
