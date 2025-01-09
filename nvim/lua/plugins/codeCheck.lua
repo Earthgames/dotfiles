@@ -26,22 +26,31 @@ return {
   },
 -- Manage external editor tooling such as LSP servers, DAP servers, linters, and formatters 
   {
-    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
     lazy = false,
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+        config = function()
+          require("mason").setup({
+            ui = {
+              icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+              }
+            }
+          })
+        end
+      },
+      "neovim/nvim-lspconfig",
+    },
     config = function()
-      require("mason").setup({
-        ui = {
-          icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-          }
-        }
-      })
+      require("mason").setup()
+      require("mason-lspconfig").setup()
+
     end
   },
-  -- "williamboman/mason-lspconfig.nvim",
-  "neovim/nvim-lspconfig",
 -- Debuger 
   { 
     "rcarriga/nvim-dap-ui", 
