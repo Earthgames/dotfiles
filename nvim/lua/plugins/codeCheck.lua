@@ -49,6 +49,9 @@ return {
       require("mason").setup()
       require("mason-lspconfig").setup()
 
+      -- C
+      -- https://clangd.llvm.org/installation#compile_commandsjson
+      require("lspconfig").clangd.setup {}
     end
   },
 -- Debuger 
