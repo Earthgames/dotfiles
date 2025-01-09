@@ -22,8 +22,8 @@
     "modules-right": [
 	"keyboard-state#cap", "keyboard-state#num",
 	"custom/spacer", "network", "custom/spacer",
-	"pulseaudio","custom/spacer", "backlight", 
-	"cpu", "temperature", "memory", "battery", "battery#bat2",
+	"pulseaudio","custom/spacer",  
+	"cpu", "temperature", "memory", "battery", "backlight", "battery#bat2",
 	"custom/spacer","tray"
 	]
 }
