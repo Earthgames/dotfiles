@@ -149,7 +149,7 @@ element {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     40px 10px;
+    padding:                     40px 10px 56px;
     border:                      0px solid;
     border-radius:               100%;
     border-color:                @selected;
