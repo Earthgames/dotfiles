@@ -21,6 +21,8 @@ filetype plugin on
 filetype indent on
 " Turn syntax highlighting on.
 syntax on
+" Conceal characters
+set conceallevel=2
 ]])
 -- Always use the system clipboard for operations
 vim.opt.clipboard = "unnamedplus"
