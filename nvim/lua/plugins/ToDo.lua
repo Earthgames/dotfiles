@@ -12,7 +12,11 @@ return {
   "numToStr/Comment.nvim",
 
 -- Rust analyzer
-  "mrcjkb/rustaceanvim",
+  {
+    "mrcjkb/rustaceanvim",
+    lazy = false
+  },
+
 
 -- Completion framework:
   "hrsh7th/nvim-cmp",
@@ -27,7 +31,7 @@ return {
   "hrsh7th/cmp-path",
   "hrsh7th/cmp-buffer",
   "hrsh7th/vim-vsnip",
-    
+
   -- Ical syntax  
   "axvr/ical.vim",
 }
