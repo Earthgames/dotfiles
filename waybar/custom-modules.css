@@ -1,5 +1,6 @@
 @import './colors.css';
 
+#custom-screenshot:hover,
 #custom-display-switcher:hover,
 #custom-wayfire-settings:hover,
 #custom-filemanager:hover,
