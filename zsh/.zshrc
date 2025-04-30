@@ -176,17 +176,9 @@ export MGFXC_WINE_PATH=$HOME/.winemonogame
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+eval "$(pyenv virtualenv-init -)"
 
-# zellij
-# if [[ -z "$ZELLIJ" ]]; then
-#     if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-#         zellij attach -c
-#     else
-#         zellij
-#     fi
-#
-#     if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-#         exit
-#     fi
-# fi
+if [[ -z "$ZELLIJ_SESSION_NAME" ]]; then
+    zellij attach -c $USER@$HOST
+fi
 
