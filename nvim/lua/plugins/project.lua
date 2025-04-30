@@ -18,7 +18,7 @@ return {
       picker = {
         type = "telescope",
       },
-      last_session_on_startup = true,
+      last_session_on_startup = false,
       -- Dashboard mode prevent session autoload on startup
       dashboard_mode = false,
       -- Timeout in milliseconds before trigger FileType autocmd after session load
