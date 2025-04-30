@@ -14,6 +14,9 @@ alacritty = "~/.config/alacritty"
 kitty = "~/.config/kitty"
 fastfetch = "~/.config/fastfetch"
 
+[zellij.files]
+zellij = "~/.config/zellij/"
+
 [tui.files]
 nvim = "~/.config/nvim"
 ranger = "~/.config/ranger"
