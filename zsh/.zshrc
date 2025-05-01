@@ -125,6 +125,7 @@ alias l="ls -l "
 alias ds="dirs -v "
 alias pd="pushd "
 alias pp="popd "
+alias con="zellij attach -c $USER@$HOST"
 
 # vimlike
 alias :q="exit"
@@ -178,7 +179,4 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init - zsh)"
 eval "$(pyenv virtualenv-init -)"
 
-if [[ -z "$ZELLIJ_SESSION_NAME" ]]; then
-    zellij attach -c $USER@$HOST
-fi
 
