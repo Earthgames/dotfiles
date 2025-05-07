@@ -25,52 +25,93 @@ return {
       })
     end
   },
--- Manage external editor tooling such as LSP servers, DAP servers, linters, and formatters 
+  -- Manage external editor tooling such as LSP servers, DAP servers, linters, and formatters
   {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    dependencies = {
-      {
-        "williamboman/mason.nvim",
-        config = function()
-          require("mason").setup({
-            ui = {
-              icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-              }
-            }
-          })
-        end
-      },
-      "neovim/nvim-lspconfig",
-    },
+    'williamboman/mason.nvim',
     config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup()
-
-      -- C
-      -- https://clangd.llvm.org/installation#compile_commandsjson
-      require("lspconfig").clangd.setup {}
-    end
+      require('mason').setup({
+        ui = {
+          icons = {
+            package_installed = '✓',
+            package_pending = '➜',
+            package_uninstalled = '✗',
+          },
+        },
+      })
+    end,
   },
--- Debuger 
-  { 
-    "rcarriga/nvim-dap-ui", 
-    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} 
+  'neovim/nvim-lspconfig',
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
+      require('mason-lspconfig').setup({
+        automatic_enable = true,
+      })
+    end,
   },
+  -- Debuger
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+  },
+  -- Formatter
+  {
+    'stevearc/conform.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local conform = require('conform')
 
--- Linter
-   -- {
-   --   "mfussenegger/nvim-lint",
-   --   opts = {
-   --     events = { "BufWritePost", "BufReadPost", "InsertLeave" },
-   --     linters_by_ft = {
-   --       markdown = {"vale"},
-   --       rust = {"clippy"},
-   --       ["*"] = { "typos" }
-   --     },
-   --   }
-   -- }
+      conform.setup({
+        formatters_by_ft = {
+          javascript = { 'prettier' },
+          typescript = { 'prettier' },
+          javascriptreact = { 'prettier' },
+          typescriptreact = { 'prettier' },
+          svelte = { 'prettier' },
+          css = { 'prettier' },
+          html = { 'prettier' },
+          json = { 'prettier' },
+          yaml = { 'prettier' },
+          markdown = { 'prettier' },
+          graphql = { 'prettier' },
+          lua = { 'stylua' },
+          python = { 'isort', 'black' },
+        },
+        format_on_save = {
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 500,
+        },
+      })
+      conform.formatters.stylua = {
+        prepend_args = { '--config-path', os.getenv('HOME') .. '/.config/nvim/other/stylua.toml' },
+      }
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>mp', function()
+        conform.format({
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 500,
+        })
+      end, { desc = 'Format file or range (in visual mode)' })
+    end,
+  },
+  -- Linter
+  'mfussenegger/nvim-lint',
+  event = {
+    'BufReadPre',
+    'BufNewFile',
+  },
+  config = function()
+    local lint = require('lint')
+
+    lint.linters_by_ft = {
+      javascript = { 'eslint_d' },
+      typescript = { 'eslint_d' },
+      javascriptreact = { 'eslint_d' },
+      typescriptreact = { 'eslint_d' },
+      svelte = { 'eslint_d' },
+      python = { 'pylint' },
+    }
+  end,
 }
