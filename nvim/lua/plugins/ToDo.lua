@@ -1,30 +1,29 @@
 return {
--- Discord
+  -- Discord
   "andweeb/presence.nvim",
 
--- Fromatter
+  -- Fromatter
   "mhartington/formatter.nvim",
 
--- Todo highlighting
+  -- Todo highlighting
   "folke/todo-comments.nvim",
 
--- Comments
+  -- Comments
   "numToStr/Comment.nvim",
 
--- Rust analyzer
+  -- Rust analyzer
   {
     "mrcjkb/rustaceanvim",
-    lazy = false
+    lazy = false,
   },
 
-
--- Completion framework:
+  -- Completion framework:
   "hrsh7th/nvim-cmp",
 
--- LSP completion source:
+  -- LSP completion source:
   "hrsh7th/cmp-nvim-lsp",
 
--- Useful completion sources:
+  -- Useful completion sources:
   "hrsh7th/cmp-nvim-lua",
   "hrsh7th/cmp-nvim-lsp-signature-help",
   "hrsh7th/cmp-vsnip",
@@ -32,6 +31,6 @@ return {
   "hrsh7th/cmp-buffer",
   "hrsh7th/vim-vsnip",
 
-  -- Ical syntax  
+  -- Ical syntax
   "axvr/ical.vim",
 }

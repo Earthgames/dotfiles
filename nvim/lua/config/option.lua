@@ -8,7 +8,7 @@ vim.g.loaded_netrwPlugin = 1
 -- enable 24-bit colour
 vim.opt.termguicolors = true
 
--- Settings 
+-- Settings
 -- Disable compatibility with vi which can cause unexpected issues.
 vim.opt.compatible = false
 
@@ -53,7 +53,7 @@ vim.opt.expandtab = true
 -- reproduce the indentation of the previous line:
 vim.opt.autoindent = true
 -- keep indentation produced by 'autoindent' if leaving the line blank:
-vim.opt.cpoptions:append "I"
+vim.opt.cpoptions:append("I")
 
 -- use shorter indentation for Haskell scripts:
 vim.cmd("autocmd FileType haskell setlocal tabstop=2")
@@ -88,7 +88,7 @@ vim.opt.wildmenu = true
 
 -- There are certain files that we would never want to edit with Vim.
 -- Wildmenu will ignore files with these extensions.
-vim.opt.wildignore = {"*.docx","*.jpg","*.png","*.gif","*.pdf","*.pyc","*.exe","*.flv","*.img","*.xlsx"}
+vim.opt.wildignore = { "*.docx", "*.jpg", "*.png", "*.gif", "*.pdf", "*.pyc", "*.exe", "*.flv", "*.img", "*.xlsx" }
 
 -- Some servers have issues with backup files, see #649.
 vim.opt.backup = false
@@ -116,16 +116,15 @@ vim.opt.signcolumn = "yes"
 -- noselect: Do not select, force to select one from the menu
 -- shortness: avoid showing extra messages when using completion
 -- updatetime: set updatetime for CursorHold
-vim.opt.completeopt = {'menuone', 'noselect', 'noinsert'}
-vim.opt.shortmess = vim.opt.shortmess + { c = true}
+vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
+vim.opt.shortmess = vim.opt.shortmess + { c = true }
 
 -- Fixed column for diagnostics to appear
 -- Show autodiagnostic popup on cursor hover_range
--- Goto previous / next diagnostic warning / error 
--- Show inlay_hints more frequently 
+-- Goto previous / next diagnostic warning / error
+-- Show inlay_hints more frequently
 vim.cmd([[
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 autocmd FileType help setlocal nospell
 au TermOpen * setlocal nospell
 ]])
-

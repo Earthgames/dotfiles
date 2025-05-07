@@ -30,43 +30,52 @@ return {
         -- insert mode: Ctrl+d
         i = "<C-d>",
         -- normal mode: d
-        n = "d"
+        n = "d",
       },
     },
     keys = {
-      { "<leader>fp", "<cmd>NeovimProjectDiscover<cr>", desc = "Find projects", },
+      { "<leader>fp", "<cmd>NeovimProjectDiscover<cr>", desc = "Find projects" },
     },
     init = function()
       -- enable saving the state of plugins in the session
       vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
-      require("nvim-tree").setup {} -- make sure nvim-tree loads
+      require("nvim-tree").setup({}) -- make sure nvim-tree loads
     end,
   },
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    dependencies = { 
-            'nvim-lua/plenary.nvim',
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
-        },
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+      },
+    },
     keys = {
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Local files" },
-      { "<leader>fn", "<cmd>Telescope lsp_dynamic_workspace_symbols default_text=#<cr>", desc = "Lsp symbols", ft = "rust",  },
-      { "<leader>fn", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Lsp symbols"},
+      {
+        "<leader>fn",
+        "<cmd>Telescope lsp_dynamic_workspace_symbols default_text=#<cr>",
+        desc = "Lsp symbols",
+        ft = "rust",
+      },
+      { "<leader>fn", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Lsp symbols" },
       { "<leader>fa", "<cmd>Telescope<cr>", desc = "Telescope" },
       { "<leader>d", "<cmd>Telescope lsp_definitions<cr>", desc = "Telescope" },
     },
     opts = {
       defaults = {
-      -- Default configuration for telescope goes here:
-      -- config_key = value,
+        -- Default configuration for telescope goes here:
+        -- config_key = value,
         mappings = {
           i = {
             -- map actions.which_key to <C-h> (default: <C-/>)
             -- actions.which_key shows the mappings for your picker,
             -- e.g. git_{create, delete, ...}_branch for the git_branches picker
             ["<C-h>"] = "which_key",
-          }
-        }
+          },
+        },
       },
       pickers = {
         lsp_dynamic_workspace_symbols = {
@@ -77,12 +86,12 @@ return {
       },
       extensions = {
         fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-        }
-      } 
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        },
+      },
     },
-  }
+  },
 }

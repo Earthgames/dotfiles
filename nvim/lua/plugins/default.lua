@@ -1,5 +1,5 @@
 return {
--- FileTree
+  -- FileTree
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -8,34 +8,34 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup {}
+      require("nvim-tree").setup({})
     end,
   },
--- Rainbow brackets
+  -- Rainbow brackets
   {
     "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
-     lazy = false,
-     priority = 999,
-     config = function()
-     require("rainbow-delimiters.setup").setup {
-       highlight = {
-         "DraculaFg",
-         "DraculaPink",
-         "DraculaCyan",
-         "DraculaGreen",
-         "DraculaPurple",
-         "DraculaOrange",
-         "DraculaRed"
-       }
-     }
-   end
+    lazy = false,
+    priority = 999,
+    config = function()
+      require("rainbow-delimiters.setup").setup({
+        highlight = {
+          "DraculaFg",
+          "DraculaPink",
+          "DraculaCyan",
+          "DraculaGreen",
+          "DraculaPurple",
+          "DraculaOrange",
+          "DraculaRed",
+        },
+      })
+    end,
   },
--- Colorscheme
+  -- Colorscheme
   {
     "dracula/vim",
-     lazy = false,
-     priority = 1000,
-     config = function()
+    lazy = false,
+    priority = 1000,
+    config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme dracula]])
     end,
