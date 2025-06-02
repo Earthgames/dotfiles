@@ -11,12 +11,6 @@ return {
   -- Comments
   "numToStr/Comment.nvim",
 
-  -- Rust analyzer
-  {
-    "mrcjkb/rustaceanvim",
-    lazy = false,
-  },
-
   -- Completion framework:
   "hrsh7th/nvim-cmp",
 
