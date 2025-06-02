@@ -47,6 +47,17 @@ return {
       require("mason-lspconfig").setup({
         automatic_enable = true,
       })
+      vim.lsp.config("pylsp", {
+        settings = {
+          pylsp = {
+            plugins = {
+              pycodestyle = {
+                maxLineLength = 120,
+              },
+            },
+          },
+        },
+      })
     end,
   },
   -- Debuger
@@ -112,6 +123,11 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       python = { "pylint" },
+    }
+
+    lint.linters.pylint.args = {
+      "--max-line-length",
+      "120",
     }
   end,
 }
