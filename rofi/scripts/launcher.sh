@@ -8,6 +8,8 @@
 dir="$HOME/.config/rofi"
 theme='launcher'
 
+source "$HOME/.config/environment.sh"
+
 ## Run
 rofi \
     -show drun -m -1\
