@@ -4,6 +4,7 @@
 [zsh.files]
 "zsh/.zshrc" = "~/.zshrc"
 "zsh/robbyrussell.zsh-theme" = "~/.oh-my-zsh/custom/themes/robbyrussell.zsh-theme"
+"zsh/environment.sh" = "~/.config/environment.sh"
 thefuck = "~/.config/thefuck/"
 # local variable laptop
 

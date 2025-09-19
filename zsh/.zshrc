@@ -147,30 +147,11 @@ alias rainbowmatrix="cmatrix -abr"
 alias nuget="mono /usr/local/bin/nuget.exe"
 
 # paths
-export XBPS_DISTDIR=$HOME/void-packages
-export PATH=$HOME/packages/anaconda/bin:$PATH
-export PATH=$HOME/.dotnet/:$PATH
-export PATH=$HOME/programms/android-studio/bin/:$PATH
-export PATH=/usr/lib/ruby/gems/3.2.0/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export DOTNET_ROOT=$HOME/.dotnet
-export MGFXC_WINE_PATH=/home/arend/.winemonogame
-# export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+source ~/.config/environment.sh
 
 # GPG Key
 export GPG_TTY=$(tty)
 
-# Theme
-export QT_QPA_PLATFORMTHEME=qt6ct # also add this to /etc/profile
-
-# locals
-export LC_CTYPE="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-
-# Add .NET Core SDK tools
-export PATH=$PATH:/home/arend/.dotnet/tools
-export MGFXC_WINE_PATH=$HOME/.winemonogame
 . "$HOME/.cargo/env"
 [ -f "/home/arend/.ghcup/env" ] && . "/home/arend/.ghcup/env" # ghcup-env
 
