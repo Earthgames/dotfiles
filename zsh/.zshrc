@@ -140,6 +140,10 @@ alias man="batman"
 # neogit
 alias neogit="nvim +Neogit"
 
+# git fetch (like neofetch)
+alias gitfetch="onefetch --nerd-fonts --text-colors 4 6 7 6 --disabled-fields churn"
+
+
 # matrix(like the movie)
 alias matrix="cmatrix -ab "
 alias rainbowmatrix="cmatrix -abr"
@@ -151,6 +155,23 @@ source ~/.config/environment.sh
 
 # GPG Key
 export GPG_TTY=$(tty)
+
+# git repository greeter
+last_repository=
+check_directory_for_new_repository() {
+ current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
+ 
+ if [ "$current_repository" ] && \
+    [ "$current_repository" != "$last_repository" ]; then
+  gitfetch
+ fi
+ last_repository=$current_repository
+}
+cd() {
+ builtin cd "$@"
+ check_directory_for_new_repository
+}
+
 
 . "$HOME/.cargo/env"
 [ -f "/home/arend/.ghcup/env" ] && . "/home/arend/.ghcup/env" # ghcup-env
