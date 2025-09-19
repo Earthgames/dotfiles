@@ -1,5 +1,5 @@
 [helpers]
-
+bool = ".dotter/helpers/bool.rhai"
 
 [zsh.files]
 "zsh/.zshrc" = "~/.zshrc"
@@ -13,6 +13,7 @@ alacritty = "~/.config/alacritty"
 
 [kitty.files]
 kitty = "~/.config/kitty"
+"fastfetch/rin.png" = { target = "~/.config/fastfetch/rin.png", type = "symbolic" }
 fastfetch = "~/.config/fastfetch"
 
 [zellij.files]
