@@ -17,92 +17,92 @@ require("todo-comments").setup()
 
 -- Language server
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "<C-.>", vim.lsp.buf.code_action, opts)
-  end,
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+        vim.keymap.set("n", "<C-.>", vim.lsp.buf.code_action, opts)
+    end,
 })
 
 -- Rust tools
 vim.g.rustaceanvim = {
-  tools = {
-    float_win_config = {
-      auto_focus = true,
+    tools = {
+        float_win_config = {
+            auto_focus = true,
+        },
     },
-  },
-  server = {
-    on_attach = function(client, bufnr)
-      vim.keymap.set("n", "<C-.>", function()
-        vim.cmd.RustLsp("codeAction")
-      end, { buffer = bufnr })
-    end,
-  },
+    server = {
+        on_attach = function(client, bufnr)
+            vim.keymap.set("n", "<C-.>", function()
+                vim.cmd.RustLsp("codeAction")
+            end, { buffer = bufnr })
+        end,
+    },
 }
 
 -- haskell tools
 vim.g.haskell_tools = {
-  tools = {
-    hover = {
-      auto_focus = true,
+    tools = {
+        hover = {
+            auto_focus = true,
+        },
     },
-  },
 }
 
 vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=DraculaFg guibg=DraculaBg]])
 
 local border = {
-  { "╭", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╮", "FloatBorder" },
-  { "│", "FloatBorder" },
-  { "╯", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╰", "FloatBorder" },
-  { "│", "FloatBorder" },
-}
-
--- Rounded borders
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+    { "╭", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╮", "FloatBorder" },
+    { "│", "FloatBorder" },
+    { "╯", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╰", "FloatBorder" },
+    { "│", "FloatBorder" },
 }
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or border
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or border
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- LSP Diagnostics Options Setup
-local sign = function(opts)
-  vim.fn.sign_define(opts.name, {
-    texthl = opts.name,
-    text = opts.text,
-    numhl = "",
-  })
-end
-
-sign({ name = "DiagnosticSignError", text = "" })
-sign({ name = "DiagnosticSignWarn", text = "" })
-sign({ name = "DiagnosticSignHint", text = "" })
-sign({ name = "DiagnosticSignInfo", text = "" })
-
 vim.diagnostic.config({
-  virtual_text = false,
-  signs = true,
-  update_in_insert = true,
-  underline = true,
-  severity_sort = false,
-  float = {
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  },
+    signs = {
+        active = true,
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.HINT] = "",
+            [vim.diagnostic.severity.INFO] = "",
+        },
+    },
+})
+
+vim.fn.sign_define(
+    "DapBreakpoint",
+    { text = "", texthl = "DiagnosticError", linehl = "", numhl = "DiagnosticError" }
+)
+vim.fn.sign_define(
+    "DapStopped",
+    { text = "", texthl = "DiagnosticWarn", linehl = "WarningMsg", numhl = "DiagnosticWarn" }
+)
+vim.diagnostic.config({
+    virtual_text = false,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = {
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+    },
 })
 
 vim.cmd([[
@@ -110,113 +110,98 @@ set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
--- Debug setup
--- local dap = require('dap')
---
--- dap.adapters.lldb = {
---   type = 'executable',
---   command = '/usr/bin/lldb-dap',
---   name = 'lldb'
--- }
---
--- dap.adapters.rust_lldb = {
---   type = 'executable',
---   command = '/usr/bin/rust-lldb',
---   name = 'rust-lldb'
--- }
---
--- dap.configurations.cpp = {
---   {
---     name = 'Launch',
---     type = 'lldb',
---     request = 'launch',
---     program = function()
---       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
---     end,
---     cwd = '${workspaceFolder}',
---     stopOnEntry = false,
---     args = {},
+-- debugger rust
+local dap = require("dap")
 
--- 💀
--- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
---
---    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
---
--- Otherwise you might get the following error:
---
---    Error on launch: Failed to attach to the target process
---
--- But you should be aware of the implications:
--- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
--- runInTerminal = false,
---   },
--- }
--- dap.configurations.c = dap.configurations.cpp
--- dap.configurations.rust = {
---   {
---     name = 'Launch',
---     type = 'rust-lldb',
---     request = 'launch',
---     program = function()
---       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
---     end,
---     cwd = '${workspaceFolder}',
---     stopOnEntry = false,
---     args = {},
---   }
--- }
+dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+        command = "/usr/bin/codelldb",
+        args = { "--port", "${port}" },
+    },
+}
+
+dap.configurations.rust = {
+    {
+        name = "Launch file",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+    },
+}
+
+local dapui = require("dapui")
+dapui.setup()
+
+dap.listeners.before.attach.dapui_config = function()
+    dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+    dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+    dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+    dapui.close()
+end
 
 -- Completion Plugin Setup
 local cmp = require("cmp")
 cmp.setup({
-  -- Enable LSP snippets
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = {
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    -- Add tab support
-    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-    ["<Tab>"] = cmp.mapping.select_next_item(),
-    ["<C-S-f>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    }),
-  },
-  -- Installed sources:
-  sources = {
-    { name = "path" }, -- file paths
-    { name = "nvim_lsp" }, -- from language server
-    { name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
-    { name = "nvim_lua" }, -- complete neovim's Lua runtime API such vim.lsp.*
-    { name = "buffer" }, -- source current buffer
-    { name = "vsnip" }, -- nvim-cmp source for vim-vsnip
-    { name = "calc" }, -- source for math calculation
-  },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  formatting = {
-    fields = { "menu", "abbr", "kind" },
-    format = function(entry, item)
-      local menu_icon = {
-        nvim_lsp = "λ",
-        vsnip = "⋗",
-        buffer = "Ω",
-        path = "🖫",
-      }
-      item.menu = menu_icon[entry.source.name]
-      return item
-    end,
-  },
+    -- Enable LSP snippets
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end,
+    },
+    mapping = {
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        -- Add tab support
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<C-S-f>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.close(),
+        ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+        }),
+    },
+    -- Installed sources:
+    sources = {
+        { name = "path" }, -- file paths
+        { name = "nvim_lsp" }, -- from language server
+        { name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
+        { name = "nvim_lua" }, -- complete neovim's Lua runtime API such vim.lsp.*
+        { name = "buffer" }, -- source current buffer
+        { name = "vsnip" }, -- nvim-cmp source for vim-vsnip
+        { name = "calc" }, -- source for math calculation
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    formatting = {
+        fields = { "menu", "abbr", "kind" },
+        format = function(entry, item)
+            local menu_icon = {
+                nvim_lsp = "λ",
+                vsnip = "⋗",
+                buffer = "Ω",
+                path = "🖫",
+            }
+            item.menu = menu_icon[entry.source.name]
+            return item
+        end,
+    },
 })
 
 -- Settings ----------------------------------------------------------------

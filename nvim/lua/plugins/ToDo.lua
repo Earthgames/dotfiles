@@ -1,30 +1,30 @@
 return {
-  -- Discord
-  "andweeb/presence.nvim",
+    -- Discord
+    "andweeb/presence.nvim",
 
-  -- Fromatter
-  "mhartington/formatter.nvim",
+    -- Fromatter
+    "mhartington/formatter.nvim",
 
-  -- Todo highlighting
-  "folke/todo-comments.nvim",
+    -- Todo highlighting
+    "folke/todo-comments.nvim",
 
-  -- Comments
-  "numToStr/Comment.nvim",
+    -- Comments
+    "numToStr/Comment.nvim",
 
-  -- Completion framework:
-  "hrsh7th/nvim-cmp",
+    -- Completion framework:
+    "hrsh7th/nvim-cmp",
 
-  -- LSP completion source:
-  "hrsh7th/cmp-nvim-lsp",
+    -- LSP completion source:
+    "hrsh7th/cmp-nvim-lsp",
 
-  -- Useful completion sources:
-  "hrsh7th/cmp-nvim-lua",
-  "hrsh7th/cmp-nvim-lsp-signature-help",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/vim-vsnip",
+    -- Useful completion sources:
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-vsnip",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/vim-vsnip",
 
-  -- Ical syntax
-  "axvr/ical.vim",
+    -- Ical syntax
+    "axvr/ical.vim",
 }

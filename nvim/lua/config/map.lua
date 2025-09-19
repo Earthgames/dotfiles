@@ -23,5 +23,32 @@ map("i", "{<cr>", "{<cr>}<ESC>kA<CR>", {})
 local closing_pairs = { "}", ")", "]", "\"", "'", ">" }
 local opening_pairs = { "{", "(", "[", "\"", "'", "<" }
 for key, chr in pairs(opening_pairs) do
-  map("i", chr, chr .. closing_pairs[key] .. "<esc>i", {})
+    map("i", chr, chr .. closing_pairs[key] .. "<esc>i", {})
 end
+
+local function close_floating_windows(opts)
+    for _, window_id in ipairs(vim.api.nvim_list_wins()) do
+        -- If window is floating
+        if vim.api.nvim_win_get_config(window_id).relative ~= "" then
+            -- Force close if called with !
+            vim.api.nvim_win_close(window_id, opts.bang)
+        end
+    end
+end
+
+-- close floating windows
+vim.api.nvim_create_user_command("CloseFloatingWindows", function(opts)
+    close_floating_windows(opts)
+end, { bang = true, nargs = 0 })
+
+-- vim.api.nvim_create_augroup("MyBufferSwitchGroup", { clear = true })
+--
+-- vim.api.nvim_create_autocmd("BufWinEnter", {
+--     pattern = ".*.",
+--     group = "MyBufferSwitchGroup",
+--     callback = function()
+--         if not vim.api.nvim_get_current_win().relative ~= "" then
+--             close_floating_windows({})
+--         end
+--     end,
+-- })
