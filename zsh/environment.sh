@@ -23,4 +23,4 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 
 # locals
 export LC_CTYPE="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+export LC_TIME="en_GB.UTF-8"
