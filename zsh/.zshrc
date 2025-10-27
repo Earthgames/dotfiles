@@ -67,7 +67,7 @@ COMPLETION_WAITING_DOTS="true"
 
 
 # Override default cd command
-ZOXIDE_CMD_OVERRIDE="cd"
+# ZOXIDE_CMD_OVERRIDE="cd"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -168,7 +168,7 @@ check_directory_for_new_repository() {
  last_repository=$current_repository
 }
 cd() {
- builtin cd "$@"
+ z "$@"
  check_directory_for_new_repository
 }
 
